@@ -28,7 +28,7 @@ if ARGV.length == 3 then
     idx
   end
 
-  comment_idx = post_idx = start_num - 1
+  sort_idx = comment_idx = post_idx = start_num - 1
   slice.each do |idx, em|
     content = em.map { |n| n.to_html } * ''
     content.strip!
@@ -42,18 +42,19 @@ if ARGV.length == 3 then
         text = content
       when 'h2'
         type = "Post"
-        idx = post_idx += 1
+        post_idx += 1
         layout = "post"
         title = em.first.content
 
         id = em.first['id']
         id['a'] = ''
         id = id.to_i
+        idx = id
 
         em.delete_at(0)
         content = em.map { |n| n.to_html } * ''
         content.strip!
-        text = "## #{title}\n\n"
+        text = ""
         text += content
 
         ans = answers[id].keep_if { |n| n.name != 'h2' }
@@ -67,7 +68,8 @@ if ARGV.length == 3 then
         title = ""
         text = content
       end
-      post_file_name = Time.now.strftime("%Y-%m-%d-#{type}-#{idx}.md")
+      post_file_name = Time.now.strftime("%Y-%m-%d-#{'%03d' % sort_idx}-#{type}-#{idx}.md")
+      sort_idx += 1
 
       output = "---\n"
       output += "layout: #{layout}\n"
@@ -75,7 +77,7 @@ if ARGV.length == 3 then
       output += "---\n"
       output += text
 
-      IO.write("_post/#{post_file_name}", output)
+      IO.write("../_posts/#{post_file_name}", output)
     end
   end
 end
