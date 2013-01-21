@@ -54,12 +54,11 @@ if ARGV.length == 3 then
         em.delete_at(0)
         content = em.map { |n| n.to_html } * ''
         content.strip!
-        text = ""
-        text += content
+        text = "<section class=\"question\">\n#{content}\n</section>"
 
         ans = answers[id].keep_if { |n| n.name != 'h2' }
         ans = answers[id].map { |n| n.name == 'p' ? n.content : n.to_html } * ''
-        ans = "<div class=\"answer\">\n#{ans.strip}\n</div>"
+        ans = "<section class=\"answer\">\n#{ans.strip}\n</section>"
         text += "\n\n"
         text += ans
       else
@@ -68,7 +67,7 @@ if ARGV.length == 3 then
         title = ""
         text = content
       end
-      post_file_name = Time.now.strftime("%Y-%m-%d-#{'%03d' % sort_idx}-#{type}-#{idx}.md")
+      post_file_name = Time.now.strftime("%Y-%m-%d-#{'%03d' % (999 - sort_idx)}-#{type}-#{idx}.md")
       sort_idx += 1
 
       output = "---\n"

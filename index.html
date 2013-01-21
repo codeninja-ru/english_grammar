@@ -4,7 +4,9 @@ title:
 ---
 {% for post in paginator.posts %}
   <article>
-  <h2>{{ post.title }}</h2>
+  {% if post.layout == 'post' %}
+    <h2>{{ post.title }}</h2>
+  {% endif %}
   {{ post.content }}
   </article>
 {% endfor %}
