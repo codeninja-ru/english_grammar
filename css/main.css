@@ -302,6 +302,20 @@ textarea {
     }
 }
 
+
+::-webkit-input-placeholder {
+    color:    #777;
+}
+:-moz-placeholder {
+    color:    #777;
+}
+::-moz-placeholder {
+    color:    #777;
+}
+:-ms-input-placeholder {
+    color:    #777;
+}
+
 .wrapper {
   width: 960px;
   padding: 10px;
@@ -317,8 +331,13 @@ textarea {
   background: #fff;
 }
 
-.question .solution {
-  color: #777;
+input.solution {
+  border: none;
+  display: inline-block;
+  background: none;
+  width: 40px;
+  text-align: center;
+  font-family: georgia, serif;
 }
 
 .answer {
