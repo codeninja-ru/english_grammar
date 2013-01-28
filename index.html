@@ -12,15 +12,17 @@ title:
 {% endfor %}
 
 <div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="/page{{paginator.previous_page}}" class="previous">Previous</a>
+  {% if paginator.page == 1 %}
+  <a class="current" href="/">1</a>
   {% else %}
-    <span class="previous">Previous</span>
+  <a href="/">1</a>
   {% endif %}
-  <span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
-  {% if paginator.next_page %}
-    <a href="/page{{paginator.next_page}}" class="next ">Next</a>
+
+  {% for count in (2..paginator.total_pages) %}
+  {% if count == paginator.page %}
+    <a class="current" href="/page{{count}}/">{{count}}</a>
   {% else %}
-    <span class="next ">Next</span>
+    <a href="/page{{count}}/">{{count}}</a>
   {% endif %}
+  {% endfor %}
 </div>

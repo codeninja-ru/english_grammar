@@ -1,10 +1,13 @@
 require 'nokogiri'
+require 'date'
 
 file_name = ARGV.first
 answer_file_name = ARGV[1]
-start_num = ARGV[2].to_i
+category = ARGV[2]
+date = Date.parse(ARGV[3])
+start_num = ARGV[4].to_i
 
-if ARGV.length == 3 then
+if ARGV.length == 5 then
   questions = Nokogiri::HTML(open(file_name), nil, 'UTF-8')
   idx = start_num
   slice = questions.css('body').first.children.group_by do |node|
@@ -67,14 +70,17 @@ if ARGV.length == 3 then
         title = ""
         text = content
       end
-      post_file_name = Time.now.strftime("%Y-%m-%d-#{'%03d' % (999 - sort_idx)}-#{type}-#{idx}.md")
+      post_file_name = date.strftime("%Y-%m-%d-#{'%03d' % (999 - sort_idx)}-#{type}-#{idx}.md")
       sort_idx += 1
 
       output = "---\n"
       output += "layout: #{layout}\n"
       output += "title: #{title}\n"
+      output += "category: #{category}\n"
       output += "---\n"
       output += text
+
+      puts post_file_name
 
       IO.write("../_posts/#{post_file_name}", output)
     end

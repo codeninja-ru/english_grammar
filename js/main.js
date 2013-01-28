@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $(".answer").addClass("hidden");
   $(".question").each(function(idx, em) {
-    $(em).html($(em).html().split("...").join("<input class='solution' type='text' maxlength='20' placeholder='...'>"));
+    $(em).html($(em).html().split("...").join("<span class='solution' contenteditable data-placeholder='...'></span>"));
   });
   $answerBtn = $("<a class='answer-btn' href='#'>Answer &rarr;</a>").click(function() {
     $(this).next(".answer").toggleClass("hidden");
@@ -9,10 +9,15 @@ $(document).ready(function() {
     return false;
   });
   $(".answer").before($answerBtn);
-  $(".question input.solution").keyup(function () {
-    var length = $(this).val().length;
-    if (length > 2) {
-      $(this).width(length * 18);
-    }
-  });
+//  $(".solution").keydown(function() {
+//    if ($(this).text() == $(this).data('placeholder')) {
+//      $(this).text('');
+//    }
+//  });
+//  $(".solution").each(function (idx, em) {
+//    $(em).html($(em).data('placeholder'));
+//  });
 });
+
+//http://jsbin.com/onako4/3/edit
+//this this solution for ajusting input width by its input

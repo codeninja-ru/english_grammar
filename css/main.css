@@ -331,13 +331,13 @@ textarea {
   background: #fff;
 }
 
-input.solution {
+.solution {
   border: none;
   display: inline-block;
   background: none;
-  width: 40px;
   text-align: center;
   font-family: georgia, serif;
+  min-width: 40px;
 }
 
 .answer {
@@ -362,4 +362,32 @@ input.solution {
 
 article {
   margin-bottom: 30px;
+}
+
+.solution:empty:before {
+  content:"...";
+}
+
+.pagination {
+  margin: 15px 0;
+}
+
+.pagination a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 5px 0 50px 0;
+  padding: 5px 12px;
+  color: #fff;
+  border-radius: 30px;
+  background: #ee5555;
+  font-size: 18px;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+}
+
+.pagination a:hover {
+  background: #ee7777;
+}
+
+.pagination a.current {
+  background: #777;
 }
