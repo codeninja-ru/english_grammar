@@ -9,15 +9,4 @@ $(document).ready(function() {
     return false;
   });
   $(".answer").before($answerBtn);
-//  $(".solution").keydown(function() {
-//    if ($(this).text() == $(this).data('placeholder')) {
-//      $(this).text('');
-//    }
-//  });
-//  $(".solution").each(function (idx, em) {
-//    $(em).html($(em).data('placeholder'));
-//  });
 });
-
-//http://jsbin.com/onako4/3/edit
-//this this solution for ajusting input width by its input
