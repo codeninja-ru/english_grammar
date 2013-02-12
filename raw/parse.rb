@@ -75,8 +75,8 @@ if ARGV.length == 5 then
 
       output = "---\n"
       output += "layout: #{layout}\n"
-      output += "title: #{title}\n"
-      output += "category: #{category}\n"
+      output += "title: \"#{title}\"\n"
+      output += "category: \"#{category}\"\n"
       output += "---\n"
       output += text
 
