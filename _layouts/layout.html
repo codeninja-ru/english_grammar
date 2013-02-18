@@ -9,12 +9,9 @@
         <title>{{ page.title }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/css/normalize.css">
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/css/main.css">
-        <script src="{{ ASSET_PATH }}/js/vendor/modernizr-2.6.2.min.js"></script>
+        <link rel="stylesheet" href="{{ site.baseurl }}css/normalize.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}css/main.css">
+        <script src="{{ site.baseurl }}js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -30,9 +27,9 @@
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{ ASSET_PATH }}/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-        <script src="{{ ASSET_PATH }}/js/plugins.js"></script>
-        <script src="{{ ASSET_PATH }}/js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ site.baseurl }}js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+        <script src="{{ site.baseurl }}js/plugins.js"></script>
+        <script src="{{ site.baseurl }}js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
