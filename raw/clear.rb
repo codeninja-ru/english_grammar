@@ -8,7 +8,7 @@ if !file_name.nil? then
   doc.css("form").remove
   doc.css("input").remove
   doc.css("a").remove
-  doc.css("span").each { |node| node['class'] = 'rules' }
+#  doc.css("span").each { |node| node['class'] = 'rules' }
   doc.css("h2").each do |node|
     node.content = node.content.strip
     node.content = node.content.lines.map { |item| item.strip }.join(" ")
