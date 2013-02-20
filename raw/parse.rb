@@ -7,12 +7,25 @@ category = ARGV[2]
 date = Date.parse(ARGV[3])
 start_num = ARGV[4].to_i
 
+def clean(body)
+  def clean_em(em)
+    em.xpath('//@class').remove
+    em.xpath('//@syle').remove
+    em.xpath('//@color').remove
+  end
+  body.css("span").each { |node| clean_em(node) }
+  body.css("table").each { |node| clean_em(node) }
+  body.css("p").each { |node| clean_em(node) }
+end
+
 if ARGV.length == 5 then
   questions = Nokogiri::HTML(open(file_name), nil, 'UTF-8')
+  clean(questions)
+
   idx = start_num
   slice = questions.css('body').first.children.group_by do |node|
     case node.name
-    when 'span'
+    when 'span', 'table'
       idx += 1
     when 'h2'
       idx += 1
@@ -21,6 +34,7 @@ if ARGV.length == 5 then
   end
 
   answers = Nokogiri::HTML(open(answer_file_name), nil, 'UTF-8')
+  clean(answers)
   idx = start_num
   answers = answers.css('body').first.children.group_by do |node|
     if node.name == 'h2' then
@@ -37,12 +51,12 @@ if ARGV.length == 5 then
     content.strip!
     unless content.empty? 
       case em.first.name
-      when 'span'
+      when 'span', 'table'
         type = "Comment"
         idx = comment_idx += 1
         layout = "span"
         title = ""
-        text = content
+        text = "<section class='rules'>#{content}</section>"
       when 'h2'
         type = "Post"
         post_idx += 1
