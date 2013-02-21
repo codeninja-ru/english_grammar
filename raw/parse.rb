@@ -51,7 +51,7 @@ if ARGV.length == 5 then
     content.strip!
     unless content.empty? 
       case em.first.name
-      when 'span', 'table'
+      when 'span', 'table', 'p', 'text'
         type = "Comment"
         idx = comment_idx += 1
         layout = "span"
@@ -79,6 +79,7 @@ if ARGV.length == 5 then
         text += "\n\n"
         text += ans
       else
+        puts "unknown block #{em.first.name}\n"
         type = "Unknown"
         layout = ""
         title = ""
