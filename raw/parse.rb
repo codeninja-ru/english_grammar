@@ -26,9 +26,13 @@ if ARGV.length == 5 then
   slice = questions.css('body').first.children.group_by do |node|
     case node.name
     when 'span', 'table'
-      idx += 1
+      idx += 1 
     when 'h2'
       idx += 1
+    when 'text', 'br'
+      # do nothing
+    else
+      puts "unexpcted tag #{node.name}\n"
     end
     idx
   end
@@ -51,7 +55,7 @@ if ARGV.length == 5 then
     content.strip!
     unless content.empty? 
       case em.first.name
-      when 'span', 'table'
+      when 'span', 'table', 'p', 'text'
         type = "Comment"
         idx = comment_idx += 1
         layout = "span"
@@ -79,6 +83,7 @@ if ARGV.length == 5 then
         text += "\n\n"
         text += ans
       else
+        puts "unknown block #{em.first.name}\n"
         type = "Unknown"
         layout = ""
         title = ""
