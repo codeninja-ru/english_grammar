@@ -26,9 +26,13 @@ if ARGV.length == 5 then
   slice = questions.css('body').first.children.group_by do |node|
     case node.name
     when 'span', 'table'
-      idx += 1
+      idx += 1 
     when 'h2'
       idx += 1
+    when 'text', 'br'
+      # do nothing
+    else
+      puts "unexpcted tag #{node.name}\n"
     end
     idx
   end
