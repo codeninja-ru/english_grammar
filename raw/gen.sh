@@ -13,3 +13,8 @@ ruby parse.rb much_many_115_123.html answers_95_150.html "much many" "2013-01-21
 ruby parse.rb adjective_comparison_124_136.html answers_95_150.html "adjective comparsion" "2013-01-20" 1
 ruby parse.rb preposition_137_144.html answers_95_150.html "preposition" "2013-01-19" 1
 ruby parse.rb preposition_145_155.html answers_95_150.html "preposition" "2013-01-19" 100
+ruby parse.rb tenses_156_173.html answers156_200.html "tenses" "2013-01-18" 1 #To be в Present (Past, Future) Indefinite Tense. Спряжение глагола to work в Present Continuous Tense. Спряжение глагола to work в Present Simple Tense
+ruby parse.rb tenses_174_181.html answers156_200.html "tenses" "2013-01-18" 100 #Present Continuous и Present Simple
+ruby parse.rb tenses_182_192.html answers156_200.html "tenses" "2013-01-18" 200 #
+ruby parse.rb tenses_182_192.html answers156_200.html "tenses" "2013-01-18" 200 #
+ruby parse.rb tenses_204_220.html answers200_250.html "tenses" "2013-01-18" 300 #
